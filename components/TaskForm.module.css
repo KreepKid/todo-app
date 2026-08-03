@@ -1,0 +1,83 @@
+.card {
+  background: var(--paper-raised, #fdfcf9);
+  border: 1px solid var(--rule-strong, #c8c0ac);
+  border-radius: 6px;
+  box-shadow: 0 1px 0 rgba(35, 38, 47, 0.03);
+}
+
+.fieldset {
+  border: none;
+  margin: 0;
+  padding: 1.25rem 1.25rem 1.4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 1.25rem;
+}
+
+.legend {
+  grid-column: 1 / -1;
+  font-family: var(--font-serif, "Spectral", serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  padding: 0 0 0.9rem;
+  margin: 0;
+}
+
+.fieldWide {
+  grid-column: 1 / -1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.label {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft, #5b5f6b);
+}
+
+.input {
+  font-family: "Inter", sans-serif;
+  font-size: 0.95rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--rule-strong, #c8c0ac);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink, #23262f);
+}
+
+.submit {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-top: 0.2rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  border-radius: 4px;
+  padding: 0.55rem 1.1rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: var(--ink, #23262f);
+  color: var(--paper, #f7f5f0);
+}
+
+.submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 720px) {
+  .fieldset {
+    grid-template-columns: 1fr;
+  }
+}

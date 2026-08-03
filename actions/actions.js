@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 
 export async function createTask(title, description, dueDate, topic){
@@ -12,6 +13,7 @@ export async function createTask(title, description, dueDate, topic){
             status: "Todo"
         }
     });
+    revalidatePath("/"); // Revalidate the cache for the root path
 }
 
 export async function getTasks() {
@@ -23,6 +25,8 @@ export async function archiveTask(id) {
         where: { id: id },
         data: { archived: true }
     });
+
+    revalidatePath("/"); // Revalidate the cache for the root path
 }
 
 export async function editTask(id, title, description, dueDate, topic, status) {
@@ -31,9 +35,10 @@ export async function editTask(id, title, description, dueDate, topic, status) {
         data: {
             title: title,
             description: description,
-            dueDate: dueDate,
+            dueDate: dueDate instanceof Date ? dueDate : new Date(dueDate),
             topic: topic,
             status: status
         }
     });
+    revalidatePath("/"); // Revalidate the cache for the root path
 }
